@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-22T00:05:13.382561" rpa="false" schemaversion="5">
+<suite id="s1" name="Devowelizer Tests" source="C:\Users\Meghana\Downloads\Devowelizer_Service_TestAutomation\tests\Devowelizer_Tests\Devowelizer_Tests.robot">
+<kw name="Devowelizer Suite Setup" owner="Devowelizer_Keywords" type="SETUP">
+<kw name="Set Log Level" owner="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.104615" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T00:05:16.104615" level="INFO">Test Suite Starts</msg>
+<arg>Test Suite Starts</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.104615" elapsed="0.000000"/>
+</kw>
+<doc>Suite set up</doc>
+<status status="PASS" start="2024-07-22T00:05:16.104615" elapsed="0.000000"/>
+</kw>
+<test id="s1-t1" name="Devowelizer Test with Input Vowels" line="11">
+<kw name="Given Service API URL is available" owner="Devowelizer_Keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The URL is:</arg>
+<arg>${Base_URL}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.104615" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-07-22T00:05:16.104615" elapsed="0.000000"/>
+</kw>
+<kw name="When User makes devowelizer Service API with vowel input and validate output" owner="Devowelizer_Keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User makes devowelizer Service API with vowel input and validate output</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.116796" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:16.116796" level="INFO">${input} = hello</msg>
+<var>${input}</var>
+<arg>hello</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.116796" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:16.116796" level="INFO">${expected} = hll</msg>
+<var>${expected}</var>
+<arg>hll</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.116796" elapsed="0.000000"/>
+</kw>
+<kw name="Get request with input and validate output" owner="Devowelizer_Keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-22T00:05:16.122946" level="INFO">Creating Session using : alias=MySession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>MySession</arg>
+<arg>${Base_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-22T00:05:16.122946" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The API service URL is ${Base_URL}/${input}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.122946" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-07-22T00:05:18.660291" level="INFO">GET Request : url=http://localhost:8080/hello 
+ path_url=/hello 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-07-22T00:05:18.660291" level="INFO">GET Response : url=http://localhost:8080/hello 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '3', 'ETag': 'W/"3-mmp3v45igr8MeFRS1yZ5uHDrQ8E"', 'Date': 'Sun, 21 Jul 2024 18:35:18 GMT', 'Connection': 'keep-alive'} 
+ body=hll 
+ </msg>
+<msg time="2024-07-22T00:05:18.660291" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>MySession</arg>
+<arg>${Base_URL}/${input}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-22T00:05:16.126336" elapsed="2.533955"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-22T00:05:18.660291" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.660291" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-22T00:05:18.675966" level="INFO">${content} = hll</msg>
+<var>${content}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.660291" elapsed="0.015675"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:18.675966" level="INFO">${body} = hll</msg>
+<arg>${body}</arg>
+<arg>${content}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response_StatusCode is ${status_code} is Validated</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response_Content is ${body} is Validated</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</return>
+<msg time="2024-07-22T00:05:18.675966" level="INFO">${body} = hll</msg>
+<var>${body}</var>
+<arg>${input}</arg>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-07-22T00:05:16.122596" elapsed="2.553370"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</return>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Devowelizer Test with Input Vowels</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-07-22T00:05:18.675966" elapsed="0.000000"/>
+</kw>
+<msg time="2024-07-22T00:05:18.675966" level="INFO">${body} = hll</msg>
+<var>${body}</var>
+<status status="PASS" start="2024-07-22T00:05:16.115678" elapsed="2.560288"/>
+</kw>
+<kw name="Then API response should have no vowels" owner="Devowelizer_Keywords">
+<kw name="Convert To List" owner="Collections">
+<msg time="2024-07-22T00:05:18.702224" level="INFO">@{output} = [ h | l | l ]</msg>
+<var>@{output}</var>
+<arg>${body}</arg>
+<doc>Converts the given ``item`` to a Python ``list`` type.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.026258"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-22T00:05:18.702224" level="INFO">@{vow} = [ a | e | i | o | u ]</msg>
+<var>@{vow}</var>
+<arg>a</arg>
+<arg>e</arg>
+<arg>i</arg>
+<arg>o</arg>
+<arg>u</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.702224" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.702224" elapsed="0.000000"/>
+</kw>
+<var name="${char}">h</var>
+<status status="PASS" start="2024-07-22T00:05:18.702224" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.702224" elapsed="0.000000"/>
+</kw>
+<var name="${char}">l</var>
+<status status="PASS" start="2024-07-22T00:05:18.702224" elapsed="0.005085"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.707309" elapsed="0.000000"/>
+</kw>
+<var name="${char}">l</var>
+<status status="PASS" start="2024-07-22T00:05:18.707309" elapsed="0.000000"/>
+</iter>
+<var>${char}</var>
+<value>@{output}</value>
+<status status="PASS" start="2024-07-22T00:05:18.702224" elapsed="0.005085"/>
+</for>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>URL after Devowelizer service is ${Base_URL}/${input}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.707309" elapsed="0.000000"/>
+</kw>
+<arg>${body}</arg>
+<status status="PASS" start="2024-07-22T00:05:18.675966" elapsed="0.031343"/>
+</kw>
+<doc>Verify Devowelizer Service API with vowel input and Validate the output</doc>
+<status status="PASS" start="2024-07-22T00:05:16.104615" elapsed="2.602694"/>
+</test>
+<test id="s1-t2" name="Devowelizer Test with Empty String" line="17">
+<kw name="Given Service API URL is available" owner="Devowelizer_Keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The URL is:</arg>
+<arg>${Base_URL}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.707309" elapsed="0.015696"/>
+</kw>
+<status status="PASS" start="2024-07-22T00:05:18.707309" elapsed="0.015696"/>
+</kw>
+<kw name="When User makes devowelizer Service API with empty string input and validate output" owner="Devowelizer_Keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User makes devowelizer Service API with empty string input and validate output</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.723005" elapsed="0.016876"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:18.740398" level="INFO">${input} = ""</msg>
+<var>${input}</var>
+<arg>""</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.740398" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:18.740398" level="INFO">${expected} = ""</msg>
+<var>${expected}</var>
+<arg>""</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.740398" elapsed="0.000000"/>
+</kw>
+<kw name="Get request with input and validate output" owner="Devowelizer_Keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-22T00:05:18.740398" level="INFO">Creating Session using : alias=MySession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>MySession</arg>
+<arg>${Base_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-22T00:05:18.740398" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The API service URL is ${Base_URL}/${input}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.740398" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-07-22T00:05:19.159269" level="INFO">GET Request : url=http://localhost:8080/%22%22 
+ path_url=/%22%22 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-07-22T00:05:19.159269" level="INFO">GET Response : url=http://localhost:8080/%22%22 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-3Sns9SSwMKZSYeMFnEirnh7LJYU"', 'Date': 'Sun, 21 Jul 2024 18:35:19 GMT', 'Connection': 'keep-alive'} 
+ body="" 
+ </msg>
+<msg time="2024-07-22T00:05:19.159269" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>MySession</arg>
+<arg>${Base_URL}/${input}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-22T00:05:18.740398" elapsed="0.418871"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-22T00:05:19.159269" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.159269" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-22T00:05:19.159269" level="INFO">${content} = ""</msg>
+<var>${content}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.159269" elapsed="0.000000"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:19.171354" level="INFO">${body} = ""</msg>
+<arg>${body}</arg>
+<arg>${content}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.169380" elapsed="0.002525"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.171982" elapsed="0.000592"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.173142" elapsed="0.000512"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response_StatusCode is ${status_code} is Validated</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.174190" elapsed="0.000552"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response_Content is ${body} is Validated</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.174899" elapsed="0.000517"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2024-07-22T00:05:19.176028" elapsed="0.000000"/>
+</return>
+<msg time="2024-07-22T00:05:19.176028" level="INFO">${body} = ""</msg>
+<var>${body}</var>
+<arg>${input}</arg>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-07-22T00:05:18.740398" elapsed="0.436149"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2024-07-22T00:05:19.176675" elapsed="0.000000"/>
+</return>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Devowelizer Test with empty string input</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-07-22T00:05:19.176675" elapsed="0.000000"/>
+</kw>
+<msg time="2024-07-22T00:05:19.177458" level="INFO">${body} = ""</msg>
+<var>${body}</var>
+<status status="PASS" start="2024-07-22T00:05:18.723005" elapsed="0.454453"/>
+</kw>
+<kw name="Then API response should have no vowels" owner="Devowelizer_Keywords">
+<kw name="Convert To List" owner="Collections">
+<msg time="2024-07-22T00:05:19.179296" level="INFO">@{output} = [ " | " ]</msg>
+<var>@{output}</var>
+<arg>${body}</arg>
+<doc>Converts the given ``item`` to a Python ``list`` type.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.179242" elapsed="0.000054"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-22T00:05:19.179924" level="INFO">@{vow} = [ a | e | i | o | u ]</msg>
+<var>@{vow}</var>
+<arg>a</arg>
+<arg>e</arg>
+<arg>i</arg>
+<arg>o</arg>
+<arg>u</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.179924" elapsed="0.000517"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.181669" elapsed="0.000533"/>
+</kw>
+<var name="${char}">"</var>
+<status status="PASS" start="2024-07-22T00:05:19.181669" elapsed="0.000533"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.182202" elapsed="0.000000"/>
+</kw>
+<var name="${char}">"</var>
+<status status="PASS" start="2024-07-22T00:05:19.182202" elapsed="0.000000"/>
+</iter>
+<var>${char}</var>
+<value>@{output}</value>
+<status status="PASS" start="2024-07-22T00:05:19.181014" elapsed="0.001188"/>
+</for>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>URL after Devowelizer service is ${Base_URL}/${input}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.182202" elapsed="0.000000"/>
+</kw>
+<arg>${body}</arg>
+<status status="PASS" start="2024-07-22T00:05:19.178063" elapsed="0.004139"/>
+</kw>
+<doc>Verify Devowelizer Service API with empty string input and Validate the output</doc>
+<status status="PASS" start="2024-07-22T00:05:18.707309" elapsed="0.477914"/>
+</test>
+<test id="s1-t3" name="Devowelizer Test with No Input Vowels" line="23">
+<kw name="Given Service API URL is available" owner="Devowelizer_Keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The URL is:</arg>
+<arg>${Base_URL}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="0.000000"/>
+</kw>
+<kw name="When User makes devowelizer Service API with input without vowels and validate output" owner="Devowelizer_Keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User makes devowelizer Service API with input without vowels and validate output</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:19.185223" level="INFO">${input} = bdcfgh</msg>
+<var>${input}</var>
+<arg>bdcfgh</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:19.185223" level="INFO">${expected} = bdcfgh</msg>
+<var>${expected}</var>
+<arg>bdcfgh</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="0.000000"/>
+</kw>
+<kw name="Get request with input and validate output" owner="Devowelizer_Keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-22T00:05:19.185223" level="INFO">Creating Session using : alias=MySession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>MySession</arg>
+<arg>${Base_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The API service URL is ${Base_URL}/${input}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-07-22T00:05:22.821669" level="INFO">GET Request : url=http://localhost:8080/bdcfgh 
+ path_url=/bdcfgh 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-07-22T00:05:22.821669" level="INFO">GET Response : url=http://localhost:8080/bdcfgh 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '6', 'ETag': 'W/"6-BELXz1JuHpBDZq8jy68q4aHC0TE"', 'Date': 'Sun, 21 Jul 2024 18:35:22 GMT', 'Connection': 'keep-alive'} 
+ body=bdcfgh 
+ </msg>
+<msg time="2024-07-22T00:05:22.821669" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>MySession</arg>
+<arg>${Base_URL}/${input}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="3.636446"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-22T00:05:22.821669" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-22T00:05:22.821669" level="INFO">${content} = bdcfgh</msg>
+<var>${content}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-07-22T00:05:22.821669" level="INFO">${body} = bdcfgh</msg>
+<arg>${body}</arg>
+<arg>${content}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response_StatusCode is ${status_code} is Validated</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Response_Content is ${body} is Validated</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</return>
+<msg time="2024-07-22T00:05:22.821669" level="INFO">${body} = bdcfgh</msg>
+<var>${body}</var>
+<arg>${input}</arg>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="3.636446"/>
+</kw>
+<return>
+<value>${body}</value>
+<status status="PASS" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</return>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Devowelizer Test with input without vowels</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-07-22T00:05:22.821669" elapsed="0.000000"/>
+</kw>
+<msg time="2024-07-22T00:05:22.821669" level="INFO">${body} = bdcfgh</msg>
+<var>${body}</var>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="3.636446"/>
+</kw>
+<kw name="Then API response should have no vowels" owner="Devowelizer_Keywords">
+<kw name="Convert To List" owner="Collections">
+<msg time="2024-07-22T00:05:22.833697" level="INFO">@{output} = [ b | d | c | f | g | h ]</msg>
+<var>@{output}</var>
+<arg>${body}</arg>
+<doc>Converts the given ``item`` to a Python ``list`` type.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-07-22T00:05:22.833697" level="INFO">@{vow} = [ a | e | i | o | u ]</msg>
+<var>@{vow}</var>
+<arg>a</arg>
+<arg>e</arg>
+<arg>i</arg>
+<arg>o</arg>
+<arg>u</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<var name="${char}">b</var>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<var name="${char}">d</var>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<var name="${char}">c</var>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<var name="${char}">f</var>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<var name="${char}">g</var>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${vow}</arg>
+<arg>${char}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<var name="${char}">h</var>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</iter>
+<var>${char}</var>
+<value>@{output}</value>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</for>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>URL after Devowelizer service is ${Base_URL}/${input}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<arg>${body}</arg>
+<status status="PASS" start="2024-07-22T00:05:22.833697" elapsed="0.000000"/>
+</kw>
+<doc>Verify Devowelizer Service API with input without vowels and Validate the output</doc>
+<status status="PASS" start="2024-07-22T00:05:19.185223" elapsed="3.648474"/>
+</test>
+<kw name="Devowelizer Suite Teardown" owner="Devowelizer_Keywords" type="TEARDOWN">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-22T00:05:22.849381" level="INFO">Test Suite Ends</msg>
+<arg>Test Suite Ends</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-22T00:05:22.849381" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-07-22T00:05:22.849381" elapsed="0.000000"/>
+</kw>
+<doc>This is a testsuite for Devowelizer Service API Tests</doc>
+<status status="PASS" start="2024-07-22T00:05:13.388079" elapsed="9.461302"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Devowelizer Tests">Devowelizer Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
